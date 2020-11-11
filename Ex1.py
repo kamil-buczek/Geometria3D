@@ -1,8 +1,7 @@
 import numpy as np
 import math
 
-vec1 = np.array([3, 4, 0])
-vec2 = np.array([8, 4, 0])
+
 
 
 def suma_wektorow(vec1, vec2):
@@ -36,8 +35,9 @@ def kat_pomiedzy_wektorami(vec1, vec2):
 
 def projekcja_wektora(vec1, vec2):
     # Projekcja wektora vec1 na wektor vec2
+    # projvec2VEC1
     licznik = iloczyn_skalarny(vec1, vec2)
-    mianownik = norma_wektora(vec2)*norma_wektora(vec2)
+    mianownik = iloczyn_skalarny(vec2,vec2)
     wynik = np.multiply((licznik/mianownik), vec2)
     return wynik
 
@@ -46,11 +46,11 @@ def normalizacja_wektora(vec):
     return vec/norma_wektora(vec)
 
 
-print(suma_wektorow(vec1, vec2))
-print(iloczyn_skalarny(vec1, vec2))
-print(iloczyn_wektorowy(vec1, vec2))
-print(norma_wektora(vec1))
-print(cos_alfa(vec1, vec2))
-print(kat_pomiedzy_wektorami(vec1, vec2))
-print(projekcja_wektora(vec1, vec2))
-print(normalizacja_wektora(vec1))
+def main():
+    vec1 = np.array([8, 8, 0])
+    vec2 = np.array([6, 2, 0])
+    print(f'Projekcja wektora wynosi: {projekcja_wektora(vec1, vec2)}')
+
+
+if __name__ == "__main__":
+    main()
