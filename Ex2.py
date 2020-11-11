@@ -33,22 +33,20 @@ def rozwiaz_uklad_rownan(A, B):
     return np.linalg.solve(A,B)
 
 
-def dfsd():
+def macierz_odwrotna(X):
+    dim=X.shape[0]
+    ONES=np.zeros((dim,dim),dtype=float)
+    for i in range(0,dim):
+        ONES[i,i]=1
+    Z1=np.append(X,ONES,axis=1)
+    for i in range(0,dim):
+        Z1[i,:]=Z1[i,:]/Z1[i,i]
+        for j in range(0,dim):
+            if j !=i:
+                Z1[j,:]=Z1[j,:]-Z1[i,:]*Z1[j,i]
+    Z2=Z1[:,dim:2*dim]
+    return Z2
 
-
-
-    print('b')
-    A=np.array([[1,2,3],[2,3,1],[3,1,2]])
-    B=np.array([1,3,2])
-    x=np.linalg.solve(A,B)
-    print(x)
-
-
-    print('b')
-    A=np.array([[1,2,3],[2,3,1],[3,1,2]])
-    B=np.array([1,3,2])
-    x=np.linalg.solve(A,B);
-    print(x)
 
 
 def main():
@@ -56,14 +54,14 @@ def main():
     vec2 = np.array([6, -2, 2])
     vec3 = np.array([0, 0, 2])
 
-    A = np.array([[1, 1, -2], [0, 2, 3], [-1, 1, -5]])
+    A = np.array([[1, 6, 4], [2, 7, 3], [8, 9, 5]])
     B = np.array([5,6,-3])
    # C = np.array([[1, 8, 9], [0, 4, 3], [5, 0, 5]])
    # D = np.array([[1, 6, 4, 0], [2, 7, 3, 0], [0, 0, 0, 0], [8, 9, 0, 5]])
    # E = np.array([[1, 8, 9, 2], [0, 2, 4, 3], [5, 0, 2, 5], [5, 1, 4, 2]])
 
 
-    print(f'Rozwiazanie: {rozwiaz_uklad_rownan(A,B)}')
+    print(f'Rozwiazanie: {macierz_odwrotna(A)}')
 
 
 if __name__ == "__main__":
