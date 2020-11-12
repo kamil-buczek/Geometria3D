@@ -1,5 +1,4 @@
 import numpy as np
-import math
 import Ex1
 
 
@@ -48,20 +47,29 @@ def macierz_odwrotna(X):
     return Z2
 
 
+def wartosci_wektory_wlasne(matrix):
+    values, vectors = np.linalg.eig(matrix)
+    return values, vectors
+
 
 def main():
     vec1 = np.array([4, -4, 2])
     vec2 = np.array([6, -2, 2])
     vec3 = np.array([0, 0, 2])
 
-    A = np.array([[1, 6, 4], [2, 7, 3], [8, 9, 5]])
-    B = np.array([5,6,-3])
+    A = np.array([[3, 0, 0], [-1, 0, 4], [2, 1, 0]])
+    B = np.array([[5, 3], [-6, -4]])
+
+    val, vec = wartosci_wektory_wlasne(A)
+    print(f'Wartosci wlasne: {val}')
+    print(f'Wektory wlasne: {vec}')
+
    # C = np.array([[1, 8, 9], [0, 4, 3], [5, 0, 5]])
    # D = np.array([[1, 6, 4, 0], [2, 7, 3, 0], [0, 0, 0, 0], [8, 9, 0, 5]])
    # E = np.array([[1, 8, 9, 2], [0, 2, 4, 3], [5, 0, 2, 5], [5, 1, 4, 2]])
 
 
-    print(f'Rozwiazanie: {macierz_odwrotna(A)}')
+    #print(f'Rozwiazanie: {macierz_odwrotna(A)}')
 
 
 if __name__ == "__main__":
